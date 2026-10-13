@@ -1,0 +1,88 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 400 1.0625rem/1.65 var(--font-body); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+p { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-variation-settings: "wdth" 92; font-weight: 700; line-height: 1; letter-spacing: -0.03em; margin: 0; color: inherit; text-wrap: balance; }
+h1 { font-size: var(--fs-h1); letter-spacing: -0.045em; line-height: 0.96; }
+h2 { font-size: var(--fs-h2); letter-spacing: -0.04em; line-height: 1; }
+h3 { font-size: var(--fs-h3); letter-spacing: -0.02em; line-height: 1.12; }
+:focus-visible { outline: 3px solid var(--blue-500); outline-offset: 3px; }
+.dark :focus-visible, .on-dark :focus-visible { outline-color: var(--sky-300); }
+.skip { position: absolute; left: -999px; top: 0; background: var(--ink-900); color: #fff; padding: 10px 16px; z-index: 100; }
+.skip:focus { left: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: var(--sp-section); position: relative; }
+.dark { background: var(--ink-900); color: var(--on-dark); }
+.dark h1, .dark h2, .dark h3 { color: #fff; }
+.paper { background: var(--paper); }
+.white { background: var(--white); }
+.mist { background: var(--mist); }
+
+/* étiquettes techniques */
+.label { font: 500 0.74rem/1.2 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.dark .label { color: #8fb0d6; }
+.lead { font-size: var(--fs-lead); line-height: 1.55; color: var(--muted); max-width: 56ch; }
+.dark .lead { color: var(--on-dark); }
+
+/* boutons */
+.btn { --bg: var(--ink-900); --fg: #fff; --hover: var(--blue-700); --hover-fg: #fff; position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; gap: 12px; height: 50px; padding: 0 24px 0 26px; border-radius: 999px; border: 1.5px solid var(--bg); background: var(--bg); color: var(--fg); font: 600 0.93rem/1 var(--font-display); letter-spacing: -0.005em; text-decoration: none; cursor: pointer; transition: color 0.35s, border-color 0.35s; }
+.btn::before { content: ""; position: absolute; inset: -1px; background: var(--hover); transform: translateY(102%); transition: transform 0.5s var(--ease); z-index: -1; border-radius: 999px; }
+.btn:hover::before, .btn:focus-visible::before { transform: none; }
+.btn:hover, .btn:focus-visible { color: var(--hover-fg); border-color: var(--hover); }
+.btn .arr { width: 18px; height: 18px; transition: transform 0.4s var(--ease); flex: none; }
+.btn:hover .arr { transform: translateX(4px); }
+.btn--light { --bg: #fff; --fg: var(--ink-900); --hover: var(--sky-300); --hover-fg: var(--ink-900); }
+.btn--ghost { --bg: transparent; --fg: currentColor; --hover: var(--ink-900); --hover-fg: #fff; border-color: currentColor; }
+.dark .btn--ghost { --hover: #fff; --hover-fg: var(--ink-900); }
+.btn--ghost:hover { border-color: var(--hover); }
+.link-arrow { display: inline-flex; align-items: center; gap: 10px; font: 600 1rem/1.2 var(--font-display); text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; padding-bottom: 5px; transition: background-size 0.4s var(--ease); }
+.link-arrow::after { content: "→"; transition: transform 0.35s var(--ease); }
+.link-arrow:hover { background-size: 0 1.5px; background-position: 100% 100%; }
+.link-arrow:hover::after { transform: translateX(5px); }
+
+/* images */
+.ph { position: relative; overflow: hidden; background: var(--ink-800); }
+.ph > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Mouvement : un système, plusieurs variantes ---------- */
+.js .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); transition-delay: var(--d, 0s); will-change: opacity, transform; }
+.js .reveal.in { opacity: 1; transform: none; }
+.js .reveal--fade { transform: none; }
+.js .reveal--left { transform: translateX(-40px); }
+.js .reveal--scale { transform: scale(0.94); }
+/* image dévoilée par un masque, avec léger zoom arrière */
+.js .mask { clip-path: inset(0 0 100% 0); transition: clip-path 1.2s var(--ease-in-out); transition-delay: var(--d, 0s); }
+.js .mask > img, .js .mask > .ph > img { transform: scale(1.18); transition: transform 1.6s var(--ease); transition-delay: var(--d, 0s); }
+.js .mask.in { clip-path: inset(0); }
+.js .mask.in > img, .js .mask.in > .ph > img { transform: none; }
+/* titres : mots qui montent derrière un masque */
+.sp .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.sp .wi { display: inline-block; }
+.js .sp .wi { transform: translateY(110%); transition: transform 1s var(--ease); transition-delay: calc(var(--i, 0) * 60ms + var(--d, 0s)); }
+.js .sp.in .wi { transform: none; }
+/* filets qui se tracent */
+.js .draw { transform-origin: left; transform: scaleX(0); transition: transform 1.2s var(--ease-in-out); transition-delay: var(--d, 0s); }
+.js .draw.in { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .js .reveal--left, .js .reveal--scale { opacity: 1; transform: none; transition: none; }
+  .js .mask { clip-path: none; transition: none; }
+  .js .mask > img, .js .mask > .ph > img { transform: none; transition: none; }
+  .js .sp .wi { transform: none; transition: none; }
+  .js .draw { transform: none; transition: none; }
+  .btn::before, .btn .arr, .link-arrow, .link-arrow::after { transition: none; }
+}
+
+main:focus { outline: none; }
+main { transition: opacity 0.22s ease, transform 0.22s ease; }
+main.is-leaving { opacity: 0; transform: translateY(10px); }
+.loadbar { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--sky-300); transform: scaleX(0); transform-origin: left; z-index: 90; pointer-events: none; opacity: 0; }
+.loadbar.run { opacity: 1; animation: load 0.6s var(--ease-in-out) forwards; }
+@keyframes load { to { transform: scaleX(1); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { main { transition: none; } .loadbar { display: none; } }
+html { overflow-x: clip; }

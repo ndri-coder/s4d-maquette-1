@@ -1,0 +1,20 @@
+{
+  "name": "s4d-maquette-1",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node scripts/check-links.mjs"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0"
+  }
+}

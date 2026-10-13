@@ -1,0 +1,47 @@
+/* Système de design S4D — direction « facettes »
+   Source de la palette : le logo (fond marine du disque, bleus clairs du polygone).
+   Un seul accent chaud, --signal, réservé aux repères de la carte (lieux de travail). */
+:root {
+  --ink-950: #020b17;
+  --ink-900: #05172e;
+  --ink-800: #0b2547;
+  --ink-700: #133a69;
+  --blue-700: #1a47ad;
+  --blue-500: #3f78e0;
+  --sky-300: #9fd3fb;
+  --sky-100: #d9edff;
+  --paper: #f5f8fc;
+  --mist: #e8eff8;
+  --white: #fff;
+  --ink: #091a30;
+  --muted: #4f6179;
+  --line: #d3deec;
+  --line-dark: rgba(255, 255, 255, 0.14);
+  --on-dark: #c3d3e8;
+  --signal: #ffb84d;
+
+  --font-display: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  /* échelle typographique : une seule source pour toutes les pages */
+  --fs-hero: clamp(3rem, 7.4vw, 7rem);
+  --fs-h1: clamp(2.1rem, 5vw, 4.6rem);
+  --fs-h2: clamp(1.9rem, 3.7vw, 3.4rem);
+  --fs-h3: clamp(1.25rem, 1.7vw, 1.6rem);
+  --fs-stmt: clamp(1.7rem, 3.5vw, 3.2rem);
+  --fs-cta: clamp(2.4rem, 5.6vw, 5.2rem);
+  --fs-lead: clamp(1.05rem, 1.25vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.93rem;
+  --sp-section: clamp(56px, 7vw, 104px);
+  --ov: clamp(36px, 5vw, 76px); /* chevauchement média / section suivante */
+  --sp-head: clamp(28px, 3.6vw, 52px);
+
+  --gutter: clamp(20px, 5vw, 80px);
+  --max: 1440px;
+  --header-h: 84px;
+  --radius: 6px;
+  --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
